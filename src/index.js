@@ -38,7 +38,19 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+    let strPer10 = expr.match(/.{10}/g);
+    let result ='';
+
+    for (string in strPer10) {
+        MORSE_TABLE['**********'] = ' ';
+        for (key in MORSE_TABLE) {
+            if (strPer10[string] === key.replace(/-/g, '11').replace(/\./g, '10').padStart(10, '0')) {
+                result = result + MORSE_TABLE[key];
+            }
+        }
+    }
+
+    return result;
 }
 
 module.exports = {
